@@ -1,0 +1,43 @@
+
+var = torch.ones(2, 2)
+print(var) --> [1, 1], [1, 1]
+
+var = torch.add(x, y)
+<mul, sub, div>
+
+you can print specific pieces, print(x[0, :])
+first index is row, second is column. Colen is syntax for all.
+This print statement would print row 0 for all columns.
+if your printing one item you can use .item() for real val. print(x[1, 1].item())
+
+to convert torch tensor to numpy array use: array = <tensorName>.numpy()
+!warning both the numpy array and tensor share the same mem location so changing 
+one also changes the other!
+
+to convert a numpy array to a torch tensor you can use: tensor = torch.from_numpy(<arrayName>)
+!same warning goes for this one!
+
+to make a tensor on the GPU use: var = torch.ones(5, device=torch.device("cuda")) Or you can
+make a tensor normally then use: var = var.to(torch.device("cuda"))
+
+replace cuda with cpu to move back to cpu
+
+when making a tensor make sure to specift that reuires_grad=True for example var = torch.ones(2, 2, requires_grad=True)
+This makes sure when calculations are done with the tensor the gradiant function is saved which is necessary for back propogation
+To turn this off just call var.requires_grad_(False)
+
+or you can do your operation inside     with torch.no_grad():
+						operation
+
+to calculate the gradiants of a tensor use tensorVar.backward()
+
+to empty gradiants call tensorVar.grad.zero_()
+
+chain rule: to find the dorrect gradiant multiply the derivitives (output with respect to input) for every node to find correct gradient.
+
+
+
+
+
+
+
