@@ -40,7 +40,7 @@ def weights_init_normal(m):
         torch.nn.init.normal_(m.weight.data, 1.0, 0.02)
         torch.nn.init.constant_(m.bias.data, 0.0)
 
-
+#making discriminator nw
 class Discriminator(nn.Module):
     def __init__(self):
         super(Discriminator, self).__init__()
@@ -69,7 +69,7 @@ class Discriminator(nn.Module):
         return validity
 
 
-
+#generator nw
 class Generator(nn.Module):
     def __init__(self):
         super(Generator, self).__init__()
@@ -134,7 +134,7 @@ optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=lr, betas=(b1, b2)
 
 Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 
-
+#train
 
 for epoch in range(n_epochs):
     for i, (imgs, _) in enumerate(dataloader):
